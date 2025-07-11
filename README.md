@@ -1,4 +1,4 @@
-# Deploy Roach Bank into Kubernetes
+# Deploy Ledger into Kubernetes
 
 Roach Bank represents a full-stack, financial accounting ledger demo running on [CockroachDB](https://www.cockroachlabs.com/)
 and PostgreSQL. It's designed to demonstrate the safety and liveness properties of a globally deployed, 
@@ -9,11 +9,6 @@ system-of-record type of workload.
 The concept of the ledger is to move funds between accounts using balanced, multi-legged transactions 
 at a high frequency. As a financial system, it needs to conserve money at all times and also provide 
 an audit trail of all transactions performed towards the accounts.
-
-This is visualized (below) using a single page to display accounts as rectangles with their current
-balance.
-
-![frontend](docs/diagram_frontend.png)
 
 ```
 clus1="crdb-aks-uksouth"
@@ -44,15 +39,9 @@ The second demo shows how CockroachDB can scale elastically to accommodate addit
 
 Scale the deployments to zero to save cost. Scale the client first.
 ```
-kubectl scale deployment bank-client --replicas=0 -n roach-bank --context $clus1
-kubectl scale deployment bank-client --replicas=0 -n roach-bank --context $clus2
-kubectl scale deployment bank-client --replicas=0 -n roach-bank --context $clus3
-```
-Scale the server
-```
-kubectl scale deployment bank-server --replicas=0 -n roach-bank --context $clus1
-kubectl scale deployment bank-server --replicas=0 -n roach-bank --context $clus2
-kubectl scale deployment bank-server --replicas=0 -n roach-bank --context $clus3
+kubectl scale deployment ledger --replicas=0 -n ledger --context $clus1
+kubectl scale deployment ledger --replicas=0 -n ledger --context $clus2
+kubectl scale deployment ledger --replicas=0 -n ledger --context $clus3
 ```
 
 Return to starting config. Remove the nodes one at a time, starting with the first cluster.
@@ -110,16 +99,11 @@ kubectl exec -it cockroachdb-client-secure -n $loc1 --context $clus1 -- ./cockro
 
 Scale Roach Bank to zero, first with the client.
 ```
-kubectl scale deployment bank-client --replicas=0 -n roach-bank --context $clus1
-kubectl scale deployment bank-client --replicas=0 -n roach-bank --context $clus2
-kubectl scale deployment bank-client --replicas=0 -n roach-bank --context $clus3
+kubectl scale deployment ledger --replicas=0 -n ledger --context $clus1
+kubectl scale deployment ledger --replicas=0 -n ledger --context $clus2
+kubectl scale deployment ledger --replicas=0 -n ledger --context $clus3
 ```
-Then the server. This will conserve resources. 
-```
-kubectl scale deployment bank-server --replicas=0 -n roach-bank --context $clus2
-kubectl scale deployment bank-server --replicas=0 -n roach-bank --context $clus3
-kubectl scale deployment bank-server --replicas=0 -n roach-bank --context $clus1
-```
+
 
 If you need to ever perform a rolling re-start of the cockroachdb pods this is how.
 
