@@ -1,6 +1,6 @@
 # Demo 2 - CockroachDB Scalability under load
 
-The purpose of this demonstration is to show how CockroachDB is able to scale to meet the needs of an increased load without any interruption to the workload that is running. We will use Roach Bank to increase the stress on  the CockroachDB cluster. Once it is under stress we will increase the number of CockroachDB node and observer the affect on the cluster.
+The purpose of this demonstration is to show how CockroachDB is able to scale to meet the needs of an increased load without any interruption to the workload that is running. We will use Ledger to increase the stress on  the CockroachDB cluster. Once it is under stress we will increase the number of CockroachDB node and observer the affect on the cluster.
 
 Check the pods are running.
 ```

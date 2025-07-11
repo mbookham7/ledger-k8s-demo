@@ -1,6 +1,6 @@
 # Deploy Ledger into Kubernetes
 
-Roach Bank represents a full-stack, financial accounting ledger demo running on [CockroachDB](https://www.cockroachlabs.com/)
+Ledger represents a full-stack, financial accounting ledger demo running on [CockroachDB](https://www.cockroachlabs.com/)
 and PostgreSQL. It's designed to demonstrate the safety and liveness properties of a globally deployed, 
 system-of-record type of workload.
 
@@ -97,13 +97,12 @@ Remove the the dead nodes. CHECK NODE NUMBERS IN THE UI!!!
 kubectl exec -it cockroachdb-client-secure -n $loc1 --context $clus1 -- ./cockroach node decommission <node numbers> --certs-dir=/cockroach-certs --host=cockroachdb-public
 ```
 
-Scale Roach Bank to zero, first with the client.
+Scale Ledger to zero.
 ```
 kubectl scale deployment ledger --replicas=0 -n ledger --context $clus1
 kubectl scale deployment ledger --replicas=0 -n ledger --context $clus2
 kubectl scale deployment ledger --replicas=0 -n ledger --context $clus3
 ```
-
 
 If you need to ever perform a rolling re-start of the cockroachdb pods this is how.
 
