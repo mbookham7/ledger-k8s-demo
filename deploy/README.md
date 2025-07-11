@@ -70,11 +70,7 @@ kubectl apply -f scalability/client-configmap-account-plan.yaml -n ledger --cont
 kubectl apply -f ./manifest/ledger-account-plan-job.yaml -n ledger --context $clus1
 ```
 
-To monitor to progress we can tail the logs of the pod. Once you see this entry below the pod can be removed.
-```
-```
-
-This command grabs the name of name of the pod and store it as an environment variable the passes it in the command below to tail the log.
+To monitor to progress we can tail the logs of the pod. This command grabs the name of name of the pod and store it as an environment variable the passes it in the command below to tail the log.
 ```
 export POD_NAME=$(kubectl get pods -n ledger --context $clus1 --selector=run=ledger-account-plan -o jsonpath="{.items[0].metadata.name}")
 kubectl logs -f --tail 100 $POD_NAME -n ledger --context $clus1
