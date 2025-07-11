@@ -50,8 +50,11 @@ To make our lives easier lets set our Kubernetes contexts as environment variabl
 > If you followed my AKS guide and used the same regions then you can use the values below. If you didn't make sure you update them to the correct values for your environment.
 ```
 clus1="mb-crdb-mr-k8s-uksouth"
-clus2="mb-crdb-mr-k8s-eastus"
-clus3="mb-crdb-mr-k8s-westus"
+clus2="mb-crdb-mr-k8s-ukwest"
+clus3="mb-crdb-mr-k8s-northeurope"
+loc1="uksouth"
+loc2="ukwest"
+loc3="northeurope"
 ```
 
 Create a new namespace for Ledger to be deployed into in each region.

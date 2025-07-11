@@ -1,4 +1,4 @@
-# Build Docker Images for Ledger
+# Build Docker Image for Ledger
 
 You are able to build a Docker image using the SpringBot framework. From the root of the repo you can run the following command.
 ```
