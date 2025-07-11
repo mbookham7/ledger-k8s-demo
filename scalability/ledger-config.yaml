@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: client-configmap
+data:
+  commands.txt: |
+    version
+    transfer-funds
+    read-balance

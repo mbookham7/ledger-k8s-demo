@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: client-configmap-account-plan
+data:
+  commands.txt: |
+    version
+    build-account-plan
+    apply-multi-region --goal REGION
